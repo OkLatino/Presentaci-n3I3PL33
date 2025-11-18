@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Modelo Cross+Border 3L - Servicios Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-green: #00ff00;
+            --dark-green: #00cc00;
+            --accent-green: #00ff88;
+            --dark-bg: #1a1a1a;
+            --darker-bg: #0f0f0f;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background: var(--darker-bg);
+            color: #ffffff;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 110px;
+            position: relative;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            overflow-y: auto;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-green));
+            z-index: 10;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            z-index: 2;
+            animation: slideIn 0.8s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TIPOGRAFÍA */
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: #ffffff;
+            line-height: 1.2;
+            text-align: center;
+            text-shadow:
+                -2px -2px 0 #000000,
+                2px -2px 0 #000000,
+                -2px 2px 0 #000000,
+                2px 2px 0 #000000;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--primary-green);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: #000000;
+            border-radius: 3px;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            font-weight: 500;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* PORTADA */
+        .hero-title {
+            text-align: center;
+        }
+
+        .company-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 40px 0;
+        }
+
+        .logo-box {
+            background: rgba(255,255,255,0.95);
+            padding: 30px 45px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .logo-3l {
+            width: 260px;
+            height: auto;
+        }
+
+        .arrow-divider {
+            font-size: 3.2rem;
+            color: var(--primary-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* LISTAS */
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        ul li {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            padding-left: 32px;
+            position: relative;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+        }
+
+        ul li strong {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* CAJAS DE CONTENIDO */
+        .content-box {
+            background: rgba(0, 255, 0, 0.05);
+            border: 2px solid var(--primary-green);
+            border-radius: 18px;
+            padding: 24px 26px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: #000000;
+            padding: 18px 26px;
+            border-radius: 14px;
+            text-align: center;
+            margin: 24px 0;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+        }
+
+        /* GRID DOS COLUMNAS */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 20px;
+        }
+
+        .column {
+            background: rgba(0, 255, 0, 0.05);
+            border: 2px solid var(--primary-green);
+            padding: 24px;
+            border-radius: 15px;
+        }
+
+        .column h3 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+
+        /* ETAPAS */
+        .etapa-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 18px;
+        }
+
+        .etapa-numero {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #000000;
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .etapa-title {
+            margin: 0;
+            padding: 0;
+            color: var(--primary-green);
+        }
+
+        .etapa-title::after {
+            display: none;
+        }
+
+        .etapa-divider {
+            margin: 26px 0 20px;
+            height: 2px;
+            background: var(--primary-green);
+            opacity: 0.7;
+        }
+
+        /* CONTROLES DE NAVEGACIÓN */
+        .controls {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .controls button {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: #000000;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .controls button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 0, 0.5);
+        }
+
+        .controls button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 700;
+            z-index: 1000;
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 34px 20px 100px 20px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 26px;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            p, ul li {
+                font-size: 0.98rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .company-logos {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .logo-box {
+                padding: 20px 26px;
+            }
+
+            .logo-3l {
+                width: 190px;
+            }
+
+            .arrow-divider {
+                font-size: 2.4rem;
+                transform: rotate(90deg);
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .etapa-header {
+                flex-direction: row;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .etapa-numero {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .content-box, .column {
+                padding: 18px;
+            }
+
+            .controls {
+                bottom: 18px;
+                gap: 10px;
+            }
+
+            .controls button {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+
+            .slide-number {
+                top: 12px;
+                right: 12px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .logo-3l {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .slide {
+                padding: 18px 26px 80px 26px;
+            }
+
+            h1 {
+                font-size: 1.9rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation" id="presentation">
+        <!-- Slide 1: PORTADA -->
+        <div class="slide">
+            <div class="slide-content hero-title">
+                <h1>Modelo Cross+Border</h1>
+                <p class="subtitle">SERVICIOS PREMIUM</p>
+
+                <div class="company-logos">
+                    <div class="logo-box">
+                        <img src="https://i.ibb.co/JWPVkm7r/LOGOOKLATINO.png" alt="OK Latino Marketing Digital" class="oklat-logo-hero">
+                    </div>
+                    <div class="arrow-divider">→</div>
+                    <div class="logo-box">
+                        <img src="https://i.ibb.co/Pk40B6y/Captura-de-pantalla-2025-11-18-141539.png" alt="I3PL" class="logo-3l">
+                    </div>
+                </div>
+
+                <p style="text-align: center; font-size: 1.3rem; margin-top: 24px; color: var(--accent-green);">
+                    Transformando la logística con servicios de valor agregado.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2: CAMPAÑA SERVICIOS PREMIUM -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>CAMPAÑA DE SERVICIOS PREMIUM 3L</h2>
+
+                <div class="content-box">
+                    <h3>Personalizamos tu valor agregado</h3>
+
+                    <p>¿Grabado con láser, estampado, bordado, impresiones (DTF, DTG, Subimación), etiquetado, ensamble ligero, empaquetado, creación de kits de productos o más?</p>
+
+                    <p style="font-weight: 600; margin-top: 10px;">Nosotros lo hacemos por ti.</p>
+
+                    <p style="margin-top: 18px;">¿Necesitas otro servicio adicional?</p>
+                    <p style="margin-top: 4px;">Cotiza con nosotros, damos soluciones a tus procesos de mejora.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: ACTUALIZACIÓN WEB -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>ACTUALIZACIÓN WEB</h2>
+
+                <p>Optimización de página web</p>
+
+                <ul>
+                    <li>Página dinámica</li>
+                    <li>Campaña anti - fakenews</li>
+                    <li>Videos informativos de cada servicios 3L</li>
+                    <li>En cada apartado tendrá opción para llenar un formulario y agendar una cita con un asesor profesional</li>
+                    <li>Se contestará de inmediato por correo al cliente y se enviará aviso al asesor manager vía mail</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: CAMPAÑA META -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>CAMPAÑA META</h2>
+
+                <ul>
+                    <li>Creación de gráficos para META Business en formato REEL o videos cortos (Shorts) redireccionados a todos los formatos de la plataforma.</li>
+                    <li>Los videos mostrarán en forma breve el flujo de trabajo de cada proceso.</li>
+                </ul>
+
+                <p style="text-align:center; font-weight:600; margin-top:26px;">Ejemplo de estructura de video:</p>
+
+                <div class="content-box">
+                    <h3 style="margin-bottom:8px;">Primera transición</h3>
+                    <p>(Mostrar resultado final al principio).</p>
+
+                    <div class="etapa-divider"></div>
+
+                    <h3 style="margin-bottom:8px;">Segunda transición</h3>
+                    <p>Mostrar el proceso desde la contratación del 3L Cross Border Premium, la transformación, personalización y producto final.</p>
+
+                    <div class="etapa-divider"></div>
+
+                    <h3 style="margin-bottom:8px;">Tercer transición</h3>
+                    <p>Cerrar con la muestra del proceso integral ¿Qué más podrías obtener en 3L?</p>
+
+                    <ul style="margin-top:10px;">
+                        <li>Inventario temporal</li>
+                        <li>Distribución de mercancía</li>
+                        <li>Procesos completos Fullfilment</li>
+                        <li>Estrategias aduanales y de impuestos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: SEGMENTACIÓN USA -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Segmentación USA</h2>
+
+                <p style="font-style: italic; margin-bottom:26px;">
+                    Las campañas serán basadas en el análisis de información obtenidas del comportamiento de la competencia y de las aduanas en USA.
+                </p>
+
+                <div class="two-columns">
+                    <div class="column">
+                        <h3>Campaña A 60%</h3>
+                        <p>Dirigida al este del Misisipi desde:</p>
+                        <ul>
+                            <li>META Business</li>
+                            <li>Google Ads</li>
+                        </ul>
+                    </div>
+
+                    <div class="column">
+                        <h3>Campaña B 30%</h3>
+                        <p>Dirigida al oeste del Misisipi desde:</p>
+                        <ul>
+                            <li>META Business</li>
+                            <li>Google Ads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: ETAPAS 1-2 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Etapas de las campañas</h2>
+
+                <div class="etapa-header">
+                    <div class="etapa-numero">1</div>
+                    <div>
+                        <h3 class="etapa-title">1° Etapa</h3>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>Optimización de página web y formulario</li>
+                    <li>Creación de contenido gráfico para página web</li>
+                    <li>Creación de la sección anti-fakenews</li>
+                    <li>Inicio del proceso de posicionamiento de marca intensivo, generando una serie de videos cortos que resuman los distintos servicios de la empresa y las necesidades que resuelve, redirigiendo el tráfico a la página web optimizada.</li>
+                    <li>Estos videos serán pautados a nivel nacional (USA) con una segmentación enfocada en comercio, exportación, importación, transportación, almacenamiento, competencias y aduanas.</li>
+                    <li>La pauta es para generar una expectativa mayor respecto a la presencia nacional e internacional de la empresa 3L.</li>
+                </ul>
+
+                <div class="etapa-divider"></div>
+
+                <div class="etapa-header">
+                    <div class="etapa-numero">2</div>
+                    <div>
+                        <h3 class="etapa-title">2° Etapa</h3>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>Está segunda trabajará con el formulario implementado con 3L, para evaluar la información de los formularios y obtener opciones de mejora a través de la data.</li>
+                    <li>Una vez concluida la segunda etapa habremos logrado perfilar a los clientes potenciales.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: ETAPAS 3-4 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Etapas de las campañas</h2>
+
+                <div class="etapa-header">
+                    <div class="etapa-numero">3</div>
+                    <div>
+                        <h3 class="etapa-title">3° Etapa</h3>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>Creación de videos comerciales por cada área de la empresa enfocada en la solución a un problema específico, cerrando cada video con un mensaje claro de un servicio integral.</li>
+                    <li>Captación de leads calificados filtrados en un formulario respecto al servicio que requiere.</li>
+                </ul>
+
+                <div class="etapa-divider"></div>
+
+                <div class="etapa-header">
+                    <div class="etapa-numero">4</div>
+                    <div>
+                        <h3 class="etapa-title">4° Etapa</h3>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>Evaluación integral de todo el proceso, desde la campaña, el filtro, el embudo de ventas, retroalimentación del tipo de clientes y información de los servicios más demandados.</li>
+                    <li>Selección de las campañas ganadoras para su réplica y modificación de las campañas con posibilidad de mejora.</li>
+                    <li>Creación de nuevo contenido según la información que nos arrojaron los clientes en sus formularios o en sus entrevistas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: ETAPA 5 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Etapas de las campañas</h2>
+
+                <div class="etapa-header">
+                    <div class="etapa-numero">5</div>
+                    <div>
+                        <h3 class="etapa-title">5° Etapa</h3>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>Creación del sistema de campañas anuales, basadas en el comportamiento del mercado y políticas internacionales.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTROLES -->
+    <div class="controls">
+        <button id="prevBtn" onclick="prevSlide()"><span class="btn-text">← Anterior</span></button>
+        <button id="fsBtn" onclick="toggleFullscreen()"><span id="fsBtnText" class="btn-text">⛶ Pantalla completa</span></button>
+        <button id="nextBtn" onclick="nextSlide()"><span class="btn-text">Siguiente →</span></button>
+    </div>
+
+    <div class="slide-number" id="slideNumber">1 / 8</div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function updateSlidePosition() {
+            const presentation = document.getElementById('presentation');
+            presentation.style.transform = `translateX(-${currentSlide * 100}vw)`;
+
+            document.getElementById('slideNumber').textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+
+            slides[currentSlide].scrollTop = 0;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlidePosition();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlidePosition();
+            }
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Gestos táctiles para móvil
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const minSwipeDistance = 50;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const horizontalDistance = Math.abs(touchEndX - touchStartX);
+            const verticalDistance = Math.abs(touchEndY - touchStartY);
+
+            if (horizontalDistance > verticalDistance && horizontalDistance > minSwipeDistance) {
+                if (touchEndX < touchStartX) {
+                    nextSlide();
+                } else if (touchEndX > touchStartX) {
+                    prevSlide();
+                }
+            }
+        }
+
+        // Prevenir zoom en doble tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // Pantalla completa
+        function updateFullscreenButton() {
+            const textSpan = document.getElementById('fsBtnText');
+            if (!textSpan) return;
+
+            if (document.fullscreenElement) {
+                textSpan.textContent = 'Salir de pantalla completa';
+            } else {
+                textSpan.textContent = '⛶ Pantalla completa';
+            }
+        }
+
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+
+            if (!document.fullscreenElement) {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+        document.addEventListener('msfullscreenchange', updateFullscreenButton);
+
+        // Inicializar
+        updateSlidePosition();
+        updateFullscreenButton();
+    </script>
+</body>
+</html>
